@@ -4,23 +4,25 @@ from warnings import catch_warnings, simplefilter
 from sklearn.model_selection import cross_val_score
 from skopt.space import Integer
 from skopt.utils import use_named_args
-from skopt import gp_minimize
+from skopt import gp_minimize, learning
 
 from sklearn.datasets import make_blobs
 from sklearn.neighbors import KNeighborsClassifier
 
 
 class BayesianOptimization():
-    def __init__(self, model, search_space):
+    def __init__(self, model, search_space, X, y):
         self.model = model
         self.search_space = search_space
+        self.X = X
+        self.y = y
 
     def eval(self):
         @use_named_args(self.search_space)
         def evaluate_model(**params):
-            model.set_params(**params)
+            self.model.set_params(**params)
             # calculate 5-fold cross validation
-            result = cross_val_score(model, X, y, cv=5, n_jobs=-1, scoring='accuracy')
+            result = cross_val_score(self.model, self.X, self.y, cv=5, n_jobs=-1, scoring='accuracy')
             # calculate the mean of the scores
             estimate = np.mean(result)
             return 1.0 - estimate
@@ -32,7 +34,7 @@ class BayesianOptimization():
             result = gp_minimize(self.eval(), self.search_space, acq_func='EI')
             # to be changed, since this print only works for the example test
             print('Best Accuracy: %.3f' % (1.0 - result.fun))
-            print('Best Parameters: n_neighbors=%d, p=%d' % (result.x[0], result.x[1]))
+            print('Best Parameters: lr=%.3f' % (result.x[0]))
         
 
 if __name__ == "__main__":
@@ -43,5 +45,5 @@ if __name__ == "__main__":
     # in addition, this is an integer space. We could also use skopt.space.space.Real, for real parameters.
     search_space = [Integer(1, 5, name='n_neighbors'), Integer(1, 2, name='p')]
 
-    bo = BayesianOptimization(model, search_space)
+    bo = BayesianOptimization(model, search_space, X, y)
     bo.run()
