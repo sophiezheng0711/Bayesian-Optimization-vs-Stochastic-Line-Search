@@ -4,7 +4,7 @@ from warnings import catch_warnings, simplefilter
 from sklearn.model_selection import cross_val_score
 from skopt.space import Integer
 from skopt.utils import use_named_args
-from skopt import gp_minimize, learning
+from skopt import gp_minimize
 
 from sklearn.datasets import make_blobs
 from sklearn.neighbors import KNeighborsClassifier
