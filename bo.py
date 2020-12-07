@@ -34,7 +34,7 @@ class BayesianOptimization():
             result = gp_minimize(self.eval(), self.search_space, acq_func='EI')
             # to be changed, since this print only works for the example test
             print('Best Accuracy: %.3f' % (1.0 - result.fun))
-            print('Best Parameters: eta0=%.10f' % (result.x[0]))
+            print('Best Parameters: eta0=%.5e' % (result.x[0]))
         
 
 if __name__ == "__main__":

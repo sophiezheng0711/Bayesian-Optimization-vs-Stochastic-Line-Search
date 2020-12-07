@@ -9,8 +9,8 @@ if __name__ == "__main__":
     X, y = mnist['data'], mnist['target']
     X_train, X_test, y_train, y_test = X[:60000], X[60000:], y[:60000], y[60000:]
 
-    model = SGDClassifier(loss='log', random_state=42, learning_rate='constant', eta0=1)
-    search_space = [Real(0.00000001, 1, name='eta0')]
+    model = SGDClassifier(loss='log', random_state=42, learning_rate='constant', eta0=0.1)
+    search_space = [Real(1e-7, 0.1, name='eta0')]
 
     bo = BayesianOptimization(model, search_space, X_train, y_train)
     bo.run()
