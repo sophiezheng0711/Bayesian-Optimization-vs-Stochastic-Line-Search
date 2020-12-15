@@ -2,11 +2,19 @@
 
 As the name suggests, we are comparing BO and SLS on classic classification problems like MNIST and CIFAR100.
 
+## Run Instructions
+
+To run Bayesian Optimization related experiments, run the following:
+```
+    python3 bo_main.py -d mnist
+    python3 bo_main.py -d mushroom
+```
+
 ## Files
 
 ```
-    # runs BO on MNIST
-    main.py
+    # runs BO on MNIST/mushroom
+    bo_main.py
     # implements bayesian optimization that takes a model, a search space, X data, and y data
     bo.py
 ```
