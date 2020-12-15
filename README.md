@@ -12,7 +12,8 @@ To run Bayesian Optimization related experiments, run the following:
 
 To run Stochastic Line Search related experiments, run the following:
 ```
-    python3 sls_torch.py
+    python3 sls_torch.py -d mnist
+    python3 sls_torch.py -d mushroom
 ```
 
 ## Files
