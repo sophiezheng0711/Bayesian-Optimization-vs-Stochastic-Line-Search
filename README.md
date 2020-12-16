@@ -4,6 +4,11 @@ As the name suggests, we are comparing BO and SLS on classic classification prob
 
 ## Run Instructions
 
+First, install all dependencies:
+```
+    pip3 install -r requirements.txt
+```
+
 To run Bayesian Optimization related experiments, run the following:
 ```
     python3 bo_main.py -d mnist
