@@ -28,7 +28,7 @@ To run Stochastic Line Search related experiments, run the following:
     # SLS optimizer implementation in PyTorch
     sls_optimizer.py
     # runs SLS on MNIST/mushroom
-    sls_torch.py
+    sls_main.py
 ```
 
 # Bayesian Optimization (BO)
