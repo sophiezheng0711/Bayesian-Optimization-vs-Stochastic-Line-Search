@@ -12,9 +12,11 @@ To run Bayesian Optimization related experiments, run the following:
 
 To run Stochastic Line Search related experiments, run the following:
 ```
-    python3 sls_torch.py -d mnist
-    python3 sls_torch.py -d mushroom
+    python3 sls_main.py -d mnist
+    python3 sls_main.py -d mushroom
 ```
+
+*Note that SLS requires CUDA*
 
 ## Files
 
@@ -36,3 +38,7 @@ To run Stochastic Line Search related experiments, run the following:
 We used `scikit-optimize` (skopt) for our Bayesian Optimization implementation. We mainly use the `skopt.gp_minimize` function with the EI (expected improvement) acquisition function.
 
 # Stochastic Line Search (SLS)
+
+## Key Packages
+
+We used PyTorch for the development of SLS.
