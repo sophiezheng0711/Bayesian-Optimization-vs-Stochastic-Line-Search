@@ -1,6 +1,6 @@
 # Bayesian-Optimization-vs-Stochastic-Line-Search
 
-As the name suggests, we are comparing BO and SLS on classic classification problems like MNIST and CIFAR100.
+As the name suggests, we are comparing BO and SLS on classic classification problems like MNIST and Mushrooms from LibSVM.
 
 ## Run Instructions
 
